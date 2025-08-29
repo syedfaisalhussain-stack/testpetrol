@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>GlobalFuel Network</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <style>
+    /* Root & Global Styles */
+    :root {
+      --bg: #0a0a0a;
+      --gold: #d4af37;
+      --muted: #9b9b9b;
+      --nav-height: 72px;
+      --max-width: 1200px;
+      font-family: 'Poppins', sans-serif;
+    }
+
+	/* Header Nav Links */
+		nav ul li a {
+		color: #fff;
+		text-decoration: none;
+		font-size: 16px;
+		transition: color 0.3s;
+}
+
+nav ul li a:hover,
+nav ul li a.active {
+  color: var(--gold);   /* golden when active */
+}
+
+	.site-title {
+  font-size: 22px;
+  font-weight: bold;
+  color: var(--gold);
+  display: inline-block;
+  animation: slideLoop 5s linear infinite;
+}
+
+@keyframes slideLoop {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { background: var(--bg); color: #fff; line-height: 1.45; }
+
+    /* Navbar */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      height: var(--nav-height);
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 12px 32px;
+      background: rgba(4,4,4,0.6);
+      backdrop-filter: blur(4px);
+      border-bottom: 1px solid rgba(255,255,255,0.03);
+      z-index: 1000;
+    }
+    .nav-left { display: flex; align-items: center; gap: 12px; }
+    .nav-left img { height: 40px; border-radius: 8px; }
+    .brand { font-weight: 700; font-size: 20px; color: #d4af37; }
+    .nav-links ul { display: flex; gap: 20px; list-style: none; }
+    .nav-links a {
+      color: #fff; text-decoration: none; padding: 8px 10px;
+      border-radius: 8px; font-weight: 600;
+      transition: color .18s, background .18s;
+    }
+    .nav-links a:hover { color: var(--gold); }
+    .nav-links a.active { color: var(--gold); background: rgba(212,175,55,0.06); }
+
+    /* Sections */
+    section {
+      min-height: calc(100vh - var(--nav-height));
+      padding: calc(var(--nav-height) + 28px) 20px 40px;
+      display: flex; align-items: center; justify-content: center;
+      scroll-margin-top: calc(var(--nav-height) + 10px);
+    }
+    .constrain { max-width: var(--max-width); width: 100%; margin: auto; }
+
+    /* Hero */
+    #home {
+      background: url('images/header-bg.jpg') center/cover no-repeat;
+      text-align: center; position: relative;
+    }
+    #home::before {
+      content: ""; position: absolute; inset: 0;
+      background: linear-gradient(180deg, rgba(0,0,0,0.55), rgba(0,0,0,0.75));
+    }
+    #home .content { position: relative; z-index: 1; }
+    #home h1 { font-size: 42px; color: var(--gold); margin-bottom: 12px; }
+    #home p { color: var(--gold); font-size: 20px; margin-bottom: 20px; }
+    .special-offer-card .btn {
+  display: inline-block;
+  margin-top: 20px;   /* 👈 Adds space above the button */
+  padding: 12px 25px;
+  background: var(--gold);
+  color: var(--black);
+  font-weight: bold;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: background 0.3s ease, transform 0.2s ease;
+}
+
+.special-offer-card .btn:hover {
+  background: #e6b800;
+  transform: translateY(-3px);
+}
+.btn:hover { transform: translateY(-3px); filter: brightness(1.03); }
+
+    /* Offers */
+    h2 { text-align: center; color: var(--gold); margin-bottom: 18px; }
+    .offers-grid {
+      display: grid; grid-template-columns: repeat(auto-fit,minmax(260px,1fr)); gap: 20px;
+    }
+    .offer-card {
+      background: #111; padding: 18px; border-radius: 12px;
+      border: 1px solid rgba(255,255,255,0.05); transition: .2s;
+    }
+    .offer-card:hover { transform: translateY(-8px); box-shadow: 0 18px 50px rgba(0,0,0,0.6); }
+    .offer-card h3 { color: var(--gold); margin-bottom: 8px; }
+    .offer-card p { color: var(--muted); font-size: 14px; }
+	
+	/* Special Offer Card */
+.special-offer-card {
+  border: 3px solid var(--gold);
+  border-radius: 15px;
+  padding: 30px;
+  max-width: 700px;
+  margin: 30px auto;
+  text-align: center;
+  background: rgba(0, 0, 0, 0.7);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.special-offer-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+.special-offer-card img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  border: 2px solid var(--gold);
+}
+
+
+    /* Products Section */
+.products-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;      /* centers heading + cards */
+  justify-content: center;  /* vertical alignment */
+  padding: 60px 20px;
+  background: #000;
+  color: #fff;
+}
+
+/* Products Title */
+.products-title {
+  font-size: 32px;
+  font-weight: bold;
+  color: var(--gold);
+  margin-bottom: 40px;
+  text-align: center;
+}
+
+/* Products Grid */
+.products-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr); /* 3 per row */
+  gap: 30px;
+  max-width: 1100px;                     /* keeps centered */
+  margin: 0 auto;
+}
+
+/* Product Card */
+.product-card {
+  background: #111;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  padding: 20px;
+  text-align: center;
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.product-card img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 15px;
+}
+
+.product-card h3 {
+  color: var(--gold);
+  margin: 10px 0;
+}
+
+
+.product-card:hover {
+  transform: scale(1.03);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.8);
+}
+
+
+    /* Contact Section */
+/* Contact Section - Full Page Center */
+.contact-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;   /* vertical center */
+  align-items: center;       /* horizontal center */
+  min-height: 100vh;         /* take full page height */
+  text-align: center;
+}
+
+/* Title */
+.contact-title {
+  font-size: 28px;
+  font-weight: bold;
+  color: var(--gold);
+  margin-bottom: 25px;
+}
+
+/* Contact Form */
+.contact-form {
+  width: 100%;
+  max-width: 600px;          /* keeps form compact */
+  padding: 20px;
+  border: 2px solid var(--gold);
+  border-radius: 12px;
+  background: #111;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.contact-form input,
+.contact-form textarea {
+  width: 100%;
+  margin: 10px 0;
+  padding: 12px;
+  border-radius: 6px;
+  border: none;
+}
+
+.contact-form button {
+  background: var(--gold);
+  color: #000;
+  border: none;
+  padding: 12px 20px;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.contact-form button:hover {
+  background: #d4af37; /* darker gold */
+}
+/* Socials (gold, centered, glow on hover) */
+.socials-wrap { 
+  padding: 12px 0 20px; 
+  text-align: center; 
+}
+
+.social-icons {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 16px;
+}
+
+.social-icons a {
+  display: inline-flex;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,175,55,0.45);
+  color: var(--gold, #d4af37);
+  align-items: center;
+  justify-content: center;
+  transition: transform .2s ease, box-shadow .2s ease, border-color .2s ease;
+}
+
+.social-icons a:hover {
+  transform: translateY(-2px) scale(1.06);
+  box-shadow: 0 0 16px rgba(212,175,55,0.45);
+  border-color: var(--gold, #d4af37);
+}
+
+.social-icons svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor; /* inherits gold */
+}
+
+
+    /* Footer */
+    footer { text-align: center; padding: 22px; background: #000; color: var(--muted); }
+
+    /* Back to Top */
+    #backToTop {
+      position: fixed; bottom: 24px; right: 24px; display: none;
+      background: var(--gold); color: #111; border: none;
+      padding: 7px 14px; border-radius: 50%; cursor: pointer;
+      font-size: 20px; box-shadow: 0 8px 30px rgba(0,0,0,0.6);
+    }
+    #backToTop:hover { transform: translateY(-3px); }
+  </style>
+</head>
+<body>
+
+<div class="logo">
+  <img src="images/logo.png" alt="Logo">
+  <span class="site-title">GlobalFuel Network</span>
+</div>
+
+  <!-- Navbar -->
+  <nav>
+    <div class="nav-left">
+      <img src="images/logo.png" alt="logo" />
+      <div class="brand">GlobalFuel Network</div>
+    </div>
+    <div class="nav-links">
+      <ul>
+        <li><a href="#home" class="active">Home</a></li>
+        <li><a href="#offers">Special Offer</a></li>
+        <li><a href="#products">Products</a></li>
+        <li><a href="#contact">Contact Us</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- Sections -->
+  <section id="home"><div class="constrain content"><h1>GlobalFuel Network</h1><p>We Connect Buyers & Sellers of Fuels & Commodities Worldwide.</p></div></section>
+    <!-- Special Offers -->
+    <!-- Special Offers -->
+  <section id="offers" class="section offers">
+    <div>
+      <h2>Special Offer</h2>
+      <div class="special-offer-card">
+        <h3>Vopak to Vopak</h3>
+        <p>
+          Exclusive limited-time offer for bulk buyers.  
+          High-quality EN590 Diesel at competitive rates with reliable delivery options.
+        </p>
+        <a href="#contact" class="btn">Get This Offer</a>
+      </div>
+    </div>
+  </section>
+
+
+<section id="products" class="products-section">
+  <h2 class="products-title">Our Products</h2>
+
+  <div class="products-grid">
+    <div class="product-card">
+      <img src="images/lng.jpg" alt="LNG">
+      <h3>LNG</h3>
+      <p>Liquefied Natural Gas description here...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/lpg.jpg" alt="LPG">
+      <h3>LPG</h3>
+      <p>Liquefied Petroleum Gas description here...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/en590.jpg" alt="EN590">
+      <h3>EN590</h3>
+      <p>Diesel fuel EN590 description here...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/jp54.jpg" alt="JP54">
+      <h3>JP54</h3>
+      <p>Aviation fuel JP54 description here...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/vopak.jpg" alt="Vopak">
+      <h3>Vopak</h3>
+      <p>Storage & logistics service description...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/d2.jpg" alt="D2">
+      <h3>D2</h3>
+      <p>Diesel D2 fuel description here...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/d6.jpg" alt="D6">
+      <h3>D6</h3>
+      <p>Residual fuel oil description here...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/sugar.jpg" alt="Brazilian Sugar">
+      <h3>Brazilian Sugar</h3>
+      <p>Premium Brazilian sugar description...</p>
+    </div>
+
+    <div class="product-card">
+      <img src="images/blco.jpg" alt="BLCO">
+      <h3>BLCO</h3>
+      <p>Bonny Light Crude Oil description...</p>
+    </div>
+  </div>
+</section>
+
+
+  <section id="contact" class="contact-section">
+  <h2 class="contact-title">Contact Us</h2>
+
+  <form class="contact-form">
+    <input type="text" placeholder="Your Name" required>
+    <input type="email" placeholder="Your Email" required>
+    <textarea placeholder="Your Message" required></textarea>
+    <button type="submit">Send</button>
+  </form>
+</section>
+
+<!-- Social Icons (place after Contact Us box) -->
+<section class="socials-wrap" aria-label="Social links">
+  <div class="social-icons">
+    <a href="https://www.linkedin.com/" target="_blank" rel="noopener" aria-label="LinkedIn" title="LinkedIn">
+      <!-- LinkedIn -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4.98 3.5C4.98 4.88 3.86 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1s2.48 1.12 2.48 2.5zM.5 23.5h4V7.98h-4V23.5zM8.5 7.98h3.83v2.13h.05c.53-1 1.83-2.05 3.77-2.05 4.03 0 4.77 2.65 4.77 6.1v9.34h-4V15.2c0-1.98-.03-4.53-2.76-4.53-2.76 0-3.19 2.16-3.19 4.39v8.44h-4V7.98z"/></svg>
+    </a>
+    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook" title="Facebook">
+      <!-- Facebook -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M22.676 0H1.326A1.326 1.326 0 0 0 0 1.326v21.348C0 23.403.597 24 1.326 24h11.495v-9.294H9.691V11.03h3.13V8.413c0-3.1 1.893-4.79 4.658-4.79 1.325 0 2.463.099 2.795.143v3.24l-1.918.001c-1.503 0-1.795.714-1.795 1.763v2.312h3.587l-.467 3.676h-3.12V24h6.116A1.326 1.326 0 0 0 24 22.674V1.326A1.326 1.326 0 0 0 22.676 0z"/></svg>
+    </a>
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram" title="Instagram">
+      <!-- Instagram -->
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 1.17.056 1.97.24 2.428.4a4.9 4.9 0 0 1 1.77 1.152 4.9 4.9 0 0 1 1.152 1.77c.16.458.344 1.258.4 2.428.058 1.266.07 1.646.07 4.85s-.012 3.584-.07 4.85c-.056 1.17-.24 1.97-.4 2.428a4.9 4.9 0 0 1-1.152 1.77 4.9 4.9 0 0 1-1.77 1.152c-.458.16-1.258.344-2.428.4-1.266.058-1.646.07-4.85.07s-3.584-.012-4.85-.07c-1.17-.056-1.97-.24-2.428-.4a4.9 4.9 0 0 1-1.77-1.152 4.9 4.9 0 0 1-1.152-1.77c-.16-.458-.344-1.258-.4-2.428C2.175 15.584 2.163 15.204 2.163 12s.012-3.584.07-4.85c.056-1.17.24-1.97.4-2.428a4.9 4.9 0 0 1 1.152-1.77 4.9 4.9 0 0 1 1.77-1.152c.458-.16 1.258-.344 2.428-.4 1.266-.058 1.646-.07 4.85-.07zm0 1.8c-3.15 0-3.522.012-4.763.069-1.025.047-1.58.218-1.948.363-.49.19-.84.417-1.206.783-.366.366-.593.716-.783 1.206-.145.368-.316.923-.363 1.948-.057 1.241-.069 1.613-.069 4.763s.012 3.522.069 4.763c.047 1.025.218 1.58.363 1.948.19.49.417.84.783 1.206.366.366.716.593 1.206.783.368.145.923.316 1.948.363 1.241.057 1.613.069 4.763.069s3.522-.012 4.763-.069c1.025-.047 1.58-.218 1.948-.363.49-.19.84-.417 1.206-.783.366-.366.593-.716.783-1.206.145-.368.316-.923.363-1.948.057-1.241.069-1.613.069-4.763s-.012-3.522-.069-4.763c-.047-1.025-.218-1.58-.363-1.948a3.1 3.1 0 0 0-.783-1.206 3.1 3.1 0 0 0-1.206-.783c-.368-.145-.923-.316-1.948-.363-1.241-.057-1.613-.069-4.763-.069zm0 3.675a6.362 6.362 0 1 1 0 12.724 6.362 6.362 0 0 1 0-12.724zm0 1.8a4.562 4.562 0 1 0 0 9.124 4.562 4.562 0 0 0 0-9.124zm6.406-2.28a1.488 1.488 0 1 1 0 2.976 1.488 1.488 0 0 1 0-2.976z"/></svg>
+    </a>
+  </div>
+</section>
+
+<!-- Social Media Icons -->
+<div class="socials-wrap">
+  <div class="social-icons
+
+
+  <!-- Footer -->
+  <footer>© <span id="year"></span> GlobalFuel Network</footer>
+
+  <!-- Back to Top -->
+  <button id="backToTop">↑</button>
+
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Footer year
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Back to Top
+  const backToTop = document.getElementById('backToTop');
+  window.addEventListener('scroll', () => {
+    backToTop.style.display = window.scrollY > 300 ? 'block' : 'none';
+  });
+  backToTop.addEventListener('click', () => window.scrollTo({top: 0, behavior: 'smooth'}));
+
+  // Nav highlight
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll(".nav-links a");
+  const observer = new IntersectionObserver(entries => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        navLinks.forEach(link => link.classList.remove("active"));
+        const id = entry.target.getAttribute("id");
+        document.querySelector(`.nav-links a[href="#${id}"]`)?.classList.add("active");
+      }
+    });
+  }, {threshold: 0.6});
+  sections.forEach(sec => observer.observe(sec));
+});
+</script>
+<script>
+  const sections = document.querySelectorAll("section");
+  const navLinks = document.querySelectorAll("nav ul li a");
+
+  window.addEventListener("scroll", () => {
+    let current = "";
+
+    sections.forEach(section => {
+      const sectionTop = section.offsetTop - 80; // offset for header height
+      const sectionHeight = section.clientHeight;
+      if (pageYOffset >= sectionTop && pageYOffset < sectionTop + sectionHeight) {
+        current = section.getAttribute("id");
+      }
+    });
+
+    navLinks.forEach(link => {
+      link.classList.remove("active");
+      if (link.getAttribute("href").includes(current)) {
+        link.classList.add("active");
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
